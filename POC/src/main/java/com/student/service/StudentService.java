@@ -30,7 +30,34 @@ import com.student.details.Student;
 		        } else {
 		            return new ArrayList<Student>();
 		        }
+			 
+			 }
+		
+		public int updatePhnNo(int id,String phoneNo) {
+			int result = 1;
+			Student  stud = studentRepo.findById(id).orElse(new Student());
+			
+			if(stud.getId()==0) {
+				return result;
+			}else {
+				stud.setMnumber(phoneNo);
+				studentRepo.save(stud);
+				return result=0;
+			}
+		}
+		
+		public int updateName(int id , String name) {
+			int result = 1;
+			Student stud = studentRepo.findByName(name);
+			if(stud.getId()==0) {
+				return result;
+			}else {
+				stud.setName(name);
+				studentRepo.save(stud);
+				return result = 0;
+			}
+			}
 		}
 
-	}
+	
 
